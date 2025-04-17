@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Lab_Exam_3_Personal_Finance_tracker</string>
+
+    <!-- Category options -->
+    <string-array name="category_array">
+        <item>Food</item>
+        <item>Transport</item>
+        <item>Bills</item>
+        <item>Entertainment</item>
+        <item>Shopping</item>
+        <item>Health</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- Income categories -->
+    <string-array name="income_category_array">
+        <item>Salary</item>
+        <item>Freelance</item>
+    </string-array>
+
+    <!-- Currency options -->
+    <string-array name="currency_array">
+        <item>LKR</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>INR</item>
+    </string-array>
+
+    <!-- Used for content description -->
+    <string name="finance_graph_illustration">Finance graph illustration showing trends</string>
+
+    <!-- New strings used in Settings screen -->
+    <string name="enable_budget_notifications">Enable Budget Notifications</string>
+    <string name="save">Save</string>
+    <string name="settings_title">Settings</string>
+    <string name="currency_label">Choose Currency Format</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3F2FD"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="60dp">
+
+        <!-- Illustration Image -->
+        <ImageView
+            android:id="@+id/imgOnboarding"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@drawable/signup_illustration"
+            android:layout_marginBottom="32dp"
+            android:contentDescription="Onboarding Illustration" />
+
+        <!-- Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track Your Finances Easily"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#0D47A1"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monitor your income, expenses and stay within your budget using CeyBudget."
+            android:textColor="#424242"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingBottom="32dp" />
+
+        <!-- Button -->
+        <Button
+            android:id="@+id/btnNextOnboarding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Started"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimaryDark" />
+
+    </LinearLayout>
+</ScrollView>

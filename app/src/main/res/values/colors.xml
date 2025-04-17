@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Category Colors -->
+    <color name="food_color">#FF9800</color>
+    <color name="transport_color">#2196F3</color>
+    <color name="bills_color">#F44336</color>
+    <color name="entertainment_color">#9C27B0</color>
+    <color name="shopping_color">#4CAF50</color>
+    <color name="health_color">#009688</color>
+    <color name="other_color">#607D8B</color>
+    <color name="salary_color">#3F51B5</color>
+    <color name="freelance_color">#673AB7</color>
+
+    <!-- Income/Expense Indicators -->
+    <color name="income_green">#4CAF50</color>
+    <color name="expense_red">#F44336</color>
+
+    <!-- Theme Colors (60-30-10 Blue Color Rule) -->
+    <color name="colorPrimary">#1976D2</color>         <!-- 60%: Main blue -->
+    <color name="colorPrimaryDark">#0D47A1</color>     <!-- 10%: Accent navy -->
+    <color name="colorSecondary">#64B5F6</color>       <!-- 30%: Light blue -->
+    <color name="colorBackground">#E3F2FD</color>      <!-- Light blue background -->
+
+
+    <color name="lightBlueBackground">#BBDEFB</color>
+
+    <color name="teal_700">#018786</color>
+    <color name="light_gray">#E0E0E0</color>
+
+
+
+</resources>
