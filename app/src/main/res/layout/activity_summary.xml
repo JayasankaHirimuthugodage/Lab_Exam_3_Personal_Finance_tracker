@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <!-- Spacer to match 8dp top margin -->
     <View
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:background="@android:color/transparent" />
 
-    <!-- Top App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,10 +24,10 @@
             android:title="Summary"
             android:titleTextColor="@android:color/white"
             app:titleCentered="true"
-            app:navigationIcon="?attr/homeAsUpIndicator" />
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:navigationIconTint="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Main Content Area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,20 +36,15 @@
         android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Scrollable Chart Content -->
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-                <!-- Spinners in a horizontal row -->
-                <!-- Spinners in a horizontal row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,7 +52,6 @@
                     android:layout_marginBottom="16dp"
                     android:gravity="center_vertical">
 
-                    <!-- Year Spinner - minimal width (approx. 4 characters) -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -75,7 +67,6 @@
                             android:paddingEnd="8dp" />
                     </LinearLayout>
 
-                    <!-- Month Spinner - moderate width -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -92,7 +83,6 @@
                             android:paddingEnd="8dp" />
                     </LinearLayout>
 
-                    <!-- Chart Type Spinner - max width -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -109,11 +99,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-
-
-
-
-                <!-- Monthly Budget Display -->
                 <TextView
                     android:id="@+id/tvMonthlyBudget"
                     android:layout_width="match_parent"
@@ -124,8 +109,6 @@
                     android:textColor="#0D47A1"
                     android:layout_marginBottom="16dp" />
 
-                <!-- Settings & Edit Buttons -->
-                <!-- Settings & Edit Buttons -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,8 +135,6 @@
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-                <!-- Pie Chart -->
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/pieChart"
                     android:layout_width="match_parent"
@@ -162,18 +143,16 @@
                     android:layout_marginBottom="48dp" />
             </LinearLayout>
         </ScrollView>
-
-        <!-- Bottom Navigation Bar -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:elevation="8dp"
-            app:menu="@menu/bottom_nav_menu"
-            app:labelVisibilityMode="labeled"
-            app:itemIconTint="@color/nav_item_selector"
-            app:itemTextColor="@color/nav_item_selector"
-            app:itemBackground="@drawable/nav_item_background" />
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#ffffff"
+        android:elevation="8dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

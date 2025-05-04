@@ -17,14 +17,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Category Color Strip -->
+
         <View
             android:id="@+id/categoryColorIndicator"
             android:layout_width="6dp"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary" />
 
-        <!-- Main Content -->
+        <!-- Container for transaction title, amount, and actions -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Header Row -->
+            <!-- Title and Date Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,14 +58,14 @@
                     android:textColor="#757575" />
             </LinearLayout>
 
-            <!-- Amount and Category Row -->
+            <!-- Row showing transaction amount and category chip -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
-                <!-- Amount -->
+                <!-- Icon and Text showing the transaction amount -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                         android:textColor="#333333" />
                 </LinearLayout>
 
-                <!-- Category Chip -->
+
                 <com.google.android.material.chip.Chip
                     android:id="@+id/categoryChip"
                     android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
 
-            <!-- Edit / Delete Buttons -->
+            <!-- Row of action buttons: Edit and Delete -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

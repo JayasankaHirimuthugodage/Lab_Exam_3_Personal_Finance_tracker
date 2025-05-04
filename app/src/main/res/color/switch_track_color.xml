@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="#64B5F6" android:state_checked="true"/> <!-- Bright Track -->
-    <item android:color="#CFD8DC"/> <!-- Light Gray when OFF -->
+    <item android:color="#64B5F6" android:state_checked="true"/> <!-- Color when the item is selected (checked) -->
+    <item android:color="#CFD8DC"/> <!-- Default color when the item is not selected (unchecked) -->
 </selector>

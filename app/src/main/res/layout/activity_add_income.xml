@@ -8,18 +8,22 @@
     android:background="#BBDEFB"
     android:fitsSystemWindows="true">
 
-    <!-- Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="8dp"
-        android:background="#1976D2"
-        android:title="Add Income"
-        android:titleTextColor="@android:color/white"
-        app:navigationIcon="?attr/homeAsUpIndicator" />
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
-    <!-- Image in Circular Frame -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1976D2"
+            app:title="Add Income"
+            app:titleCentered="true"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator" />
+    </com.google.android.material.appbar.AppBarLayout>
+
     <FrameLayout
         android:layout_width="160dp"
         android:layout_height="160dp"
@@ -38,7 +42,6 @@
             android:contentDescription="Income Illustration" />
     </FrameLayout>
 
-    <!-- Scrollable Form -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,7 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Income Title -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutIncomeTitle"
                 android:layout_width="match_parent"
@@ -66,7 +68,6 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Income Amount -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutIncomeAmount"
                 android:layout_width="match_parent"
@@ -84,7 +85,6 @@
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Category (Spinner) -->
             <Spinner
                 android:id="@+id/spinnerIncomeCategory"
                 android:layout_width="match_parent"
@@ -92,7 +92,6 @@
                 android:layout_marginTop="12dp"
                 android:spinnerMode="dropdown" />
 
-            <!-- Income Date -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutIncomeDate"
                 android:layout_width="match_parent"
@@ -114,7 +113,6 @@
                     android:textColor="#000000" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Save Button -->
             <Button
                 android:id="@+id/btnSaveIncome"
                 android:layout_width="match_parent"

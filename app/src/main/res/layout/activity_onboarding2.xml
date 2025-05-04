@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- App Illustration with improved size and margins -->
         <ImageView
             android:layout_width="220dp"
             android:layout_height="220dp"
@@ -23,7 +22,6 @@
             android:contentDescription="CeyBudget Features"
             android:elevation="4dp" />
 
-        <!-- Title with improved typography and app colors -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +32,6 @@
             android:layout_marginBottom="24dp"
             android:fontFamily="sans-serif-medium" />
 
-        <!-- Feature List with improved styling and app colors -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +42,6 @@
             android:layout_marginBottom="40dp"
             android:fontFamily="sans-serif" />
 
-        <!-- Next Button with modern styling and app colors -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

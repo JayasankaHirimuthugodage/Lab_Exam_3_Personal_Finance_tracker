@@ -1,4 +1,4 @@
-// Create this file: com/example/lab_exam_3_personal_finance_tracker/util/TransactionItemDecoration.kt
+
 package com.example.lab_exam_3_personal_finance_tracker.utils
 
 import android.graphics.Rect

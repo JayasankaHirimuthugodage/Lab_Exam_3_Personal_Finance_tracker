@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Lab_Exam_3_Personal_Finance_tracker</string>
 
-    <!-- Category options -->
+    <!-- Expense category options used in transaction form -->
+
     <string-array name="category_array">
         <item>Food</item>
         <item>Transport</item>
@@ -12,13 +13,15 @@
         <item>Other</item>
     </string-array>
 
-    <!-- Income categories -->
+    <!-- Categories for income selection in Add Income screen -->
+
     <string-array name="income_category_array">
         <item>Salary</item>
         <item>Freelance</item>
     </string-array>
 
-    <!-- Currency options -->
+    <!-- Currency format options displayed in Settings -->
+
     <string-array name="currency_array">
         <item>LKR</item>
         <item>USD</item>
@@ -28,10 +31,11 @@
         <item>INR</item>
     </string-array>
 
-    <!-- Used for content description -->
+    <!-- content description strings -->
     <string name="finance_graph_illustration">Finance graph illustration showing trends</string>
 
-    <!-- New strings used in Settings screen -->
+    <!-- String labels and options displayed on the Settings screen -->
+
     <string name="enable_budget_notifications">Enable Budget Notifications</string>
     <string name="save">Save</string>
     <string name="settings_title">Settings</string>

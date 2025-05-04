@@ -19,7 +19,7 @@
     <color name="income_green">#4CAF50</color>
     <color name="expense_red">#F44336</color>
 
-    <!-- Theme Colors (60-30-10 Blue Color Rule) -->
+    <!-- Theme Colors (60-30-10  Color Rule) -->
     <color name="colorPrimary">#1976D2</color>         <!-- 60%: Main blue -->
     <color name="colorPrimaryDark">#0D47A1</color>     <!-- 10%: Accent navy -->
     <color name="colorSecondary">#64B5F6</color>       <!-- 30%: Light blue -->

@@ -12,7 +12,8 @@ class BudgetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_budget)
 
-        // Setup toolbar with back arrow
+        // Initialize toolbar with title and back button
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -42,10 +42,10 @@ class SummaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summary)
 
-        // ✅ Setup custom toolbar
+        // Setup the toolbar with title and back navigation
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        toolbar.setTitleTextColor(Color.WHITE) // ✅ Force white title
+        toolbar.setTitleTextColor(Color.WHITE)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Summary"
         toolbar.setNavigationOnClickListener {
@@ -71,7 +71,7 @@ class SummaryActivity : AppCompatActivity() {
         setupChartTypeSpinner()
         displayMonthlyBudget()
 
-        // ✅ Bottom Navigation Bar setup
+        // Configure bottom navigation actions
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.selectedItemId = R.id.menu_summary
 

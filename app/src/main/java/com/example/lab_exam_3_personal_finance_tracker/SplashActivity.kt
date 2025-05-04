@@ -18,7 +18,8 @@ class SplashActivity : AppCompatActivity() {
         val tvAppName = findViewById<TextView>(R.id.tvAppName)
         val tvSubText = findViewById<TextView>(R.id.tvSubText)
 
-        // ✅ Fix: Make views visible before animating
+        // Ensure text views are fully visible before starting animation
+
         tvAppName.alpha = 1f
         tvSubText.alpha = 1f
 
@@ -30,7 +31,8 @@ class SplashActivity : AppCompatActivity() {
         tvAppName.startAnimation(fadeIn)
         tvSubText.startAnimation(fadeIn)
 
-        // ⏳ Delay transition (increased to 4s)
+        // Delay navigation to next screen after splash animation
+
         Handler(Looper.getMainLooper()).postDelayed({
             val prefs = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
             val isLoggedIn = prefs.getBoolean("isLoggedIn", false)
@@ -43,6 +45,6 @@ class SplashActivity : AppCompatActivity() {
 
             startActivity(intent)
             finish()
-        }, 4000) // 4-second delay
+        }, 4000)
     }
 }

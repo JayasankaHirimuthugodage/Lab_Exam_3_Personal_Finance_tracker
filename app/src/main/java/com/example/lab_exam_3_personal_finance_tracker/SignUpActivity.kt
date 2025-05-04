@@ -19,7 +19,8 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        // Initialize views
+        // Bind UI elements to their respective views in the layout
+
         etFullName = findViewById(R.id.etFullName)
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
@@ -33,12 +34,14 @@ class SignUpActivity : AppCompatActivity() {
             val password = etPassword.text.toString().trim()
             val savedEmail = sharedPref.getString("email", null)
 
-            // Clear any previous errors
+            // Remove validation errors before rechecking input fields
+
             etFullName.error = null
             etEmail.error = null
             etPassword.error = null
 
-            // Validation checks
+            // Validate user input for full name, email, and password
+
             when {
                 fullName.isEmpty() || email.isEmpty() || password.isEmpty() -> {
                     Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
@@ -56,7 +59,8 @@ class SignUpActivity : AppCompatActivity() {
                     etEmail.error = "Email already registered"
                 }
                 else -> {
-                    // Save user data
+                    // Store new user information in SharedPreferences
+
                     sharedPref.edit().apply {
                         putString("fullName", fullName)
                         putString("email", email)
@@ -66,7 +70,8 @@ class SignUpActivity : AppCompatActivity() {
 
                     Toast.makeText(this, "Sign up successful!", Toast.LENGTH_SHORT).show()
 
-                    // Navigate to Sign In
+                    // Redirect user to the SignInActivity after successful registration
+
                     val intent = Intent(this, SignInActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)

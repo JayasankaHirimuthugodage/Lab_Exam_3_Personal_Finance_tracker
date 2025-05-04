@@ -30,19 +30,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ✅ Toolbar setup
+        //  Toolbar setup
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "All Transactions"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // ✅ View binding
+        // Initialize RecyclerView and filter spinners
+
         rvTransactions = findViewById(R.id.rvTransactions)
         spinnerYear = findViewById(R.id.spinnerYear)
         spinnerMonth = findViewById(R.id.spinnerMonth)
         spinnerType = findViewById(R.id.spinnerType)
 
-        // ✅ Load and display data
+        // Load and display data
         allTransactions = SharedPrefManager(this).loadTransactions().toMutableList()
         adapter = TransactionAdapter(allTransactions.toMutableList(),
             onEditClick = { transaction ->
@@ -65,7 +66,8 @@ class MainActivity : AppCompatActivity() {
 
         rvTransactions.layoutManager = LinearLayoutManager(this)
 
-        // Add item decoration for better spacing between transactions
+        // Apply custom spacing between RecyclerView items
+
         val itemSpacing = resources.getDimensionPixelSize(R.dimen.transaction_item_spacing)
         rvTransactions.addItemDecoration(TransactionItemDecoration(itemSpacing))
 
@@ -173,8 +175,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Custom ItemDecoration to add spacing between transaction items in the RecyclerView
+     * ItemDecoration to add padding around each transaction item in the list.
+     * Adds extra top padding to the first item for visual separation.
      */
+
     inner class TransactionItemDecoration(private val spacing: Int) : RecyclerView.ItemDecoration() {
         override fun getItemOffsets(
             outRect: Rect,

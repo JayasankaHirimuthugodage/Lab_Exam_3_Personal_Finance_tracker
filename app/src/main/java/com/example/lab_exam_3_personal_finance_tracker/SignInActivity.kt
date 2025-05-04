@@ -16,7 +16,7 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in) // ✅ Show screen no matter what
+        setContentView(R.layout.activity_sign_in)
 
         val prefs = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 

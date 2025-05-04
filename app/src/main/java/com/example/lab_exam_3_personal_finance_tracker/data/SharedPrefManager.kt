@@ -22,7 +22,8 @@ class SharedPrefManager(private val context: Context) {
     private val emailKey = "user_email"
     private val passwordKey = "user_password"
 
-    // 🧾 Save transaction
+    // Add the new transaction to the existing list and save it in SharedPreferences
+
     fun saveTransaction(newTransaction: Transaction) {
         val currentList = loadTransactions().toMutableList()
         currentList.add(newTransaction)
@@ -30,20 +31,21 @@ class SharedPrefManager(private val context: Context) {
         prefs.edit().putString(key, json).apply()
     }
 
-    // 🧾 Load transactions
+    // Retrieve the list of transactions from SharedPreferences and return it as a list
     fun loadTransactions(): List<Transaction> {
         val json = prefs.getString(key, null) ?: return emptyList()
         val type = object : TypeToken<List<Transaction>>() {}.type
         return gson.fromJson(json, type)
     }
 
-    // 🧾 Overwrite all transactions
+    // Replace the current list of transactions with the new list in SharedPreferences
+
     fun overwriteTransactions(newList: List<Transaction>) {
         val json = gson.toJson(newList)
         prefs.edit().putString(key, json).apply()
     }
 
-    // 💱 Save and load currency
+    //  Save and load currency
     fun saveCurrency(currency: String) {
         prefs.edit().putString(currencyKey, currency).apply()
     }
@@ -52,7 +54,7 @@ class SharedPrefManager(private val context: Context) {
         return prefs.getString(currencyKey, "LKR") ?: "LKR"
     }
 
-    // 🔔 Notifications toggle
+    //  Notifications toggle
     fun setBudgetNotificationEnabled(enabled: Boolean) {
         prefs.edit().putBoolean(notifyKey, enabled).apply()
     }
@@ -61,7 +63,7 @@ class SharedPrefManager(private val context: Context) {
         return prefs.getBoolean(notifyKey, true)
     }
 
-    // 👤 Save and load user profile info
+    //  Save and load user profile info
     fun saveFullName(name: String) {
         prefs.edit().putString(fullNameKey, name).apply()
     }
@@ -86,12 +88,13 @@ class SharedPrefManager(private val context: Context) {
         return prefs.getString(passwordKey, "") ?: ""
     }
 
-    // ❌ Clear all data (delete account)
+    //  Clear all data (delete account)
     fun clearAll() {
         prefs.edit().clear().apply()
     }
 
-    // 📤 Export backup to internal storage
+    // Serialize the list of transactions to JSON and save it as a backup file in internal storage
+
     fun backupToFile() {
         try {
             val transactionList = loadTransactions()
@@ -106,7 +109,8 @@ class SharedPrefManager(private val context: Context) {
         }
     }
 
-    // 📥 Restore from backup file
+    // Read the backup file from internal storage, deserialize it, and restore the transactions
+
     fun restoreFromFile() {
         try {
             val file = File(context.filesDir, "backup_transactions.json")

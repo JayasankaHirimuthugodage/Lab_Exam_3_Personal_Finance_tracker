@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:color="#1976D2" android:state_checked="true"/> <!-- Strong Blue -->
-    <item android:color="#B0BEC5"/> <!-- Gray when OFF -->
+    <item android:color="#B0BEC5"/> <!-- Unchecked state - light gray for inactive tab -->
+
+
 </selector>

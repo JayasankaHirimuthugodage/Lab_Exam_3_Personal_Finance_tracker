@@ -17,7 +17,7 @@ class AddIncomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_income)
 
-        // ✅ Setup toolbar with white title
+        // Setup the toolbar with title and back navigation
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white))
@@ -34,11 +34,11 @@ class AddIncomeActivity : AppCompatActivity() {
         val layoutAmount = findViewById<TextInputLayout>(R.id.layoutIncomeAmount)
         val layoutDate = findViewById<TextInputLayout>(R.id.layoutIncomeDate)
 
-        // ✅ Set amount hint with selected currency
+        // Set the hint text for amount using selected currency
         val currency = SharedPrefManager(this).loadCurrency()
         layoutAmount.hint = "Amount ($currency)"
 
-        // Setup spinner with income categories
+        // Set up spinner with income categories from resources
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.income_category_array,
@@ -47,7 +47,7 @@ class AddIncomeActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCategory.adapter = adapter
 
-        // Date picker setup
+        // Show date picker dialog on date field click
         etDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val datePicker = DatePickerDialog(this,
@@ -68,12 +68,12 @@ class AddIncomeActivity : AppCompatActivity() {
             val category = spinnerCategory.selectedItem.toString()
             val date = etDate.text.toString().trim()
 
-            // Clear previous errors
+            // Reset previous error messages before validation
             layoutTitle.error = null
             layoutAmount.error = null
             layoutDate.error = null
 
-            // ✅ Validation
+            // Validate input fields before saving income
             when {
                 title.isBlank() || title.length < 3 -> {
                     layoutTitle.error = "Title must be at least 3 characters"

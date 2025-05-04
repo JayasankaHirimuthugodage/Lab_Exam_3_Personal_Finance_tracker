@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <!-- Top App Bar -->
+<!-- App bar with toolbar for Home screen navigation -->
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -23,7 +25,8 @@
             app:menu="@menu/menu_home" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Scrollable Content Area -->
+    <!-- NestedScrollView for main vertical scrolling layout -->
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,13 +40,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#BBDEFB"
-            android:padding="16dp">
-
-            <!-- 8dp Spacer at Top -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:background="@android:color/transparent" />
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp">
 
             <!-- Finance Illustration Image -->
             <ImageView
@@ -55,7 +54,8 @@
                 android:src="@drawable/finance_illustration"
                 android:contentDescription="@string/finance_graph_illustration" />
 
-            <!-- Financial Summary Card -->
+            <!-- Card showing total income, expenses, and balance -->
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,7 +115,8 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Action Buttons -->
+            <!-- Buttons for adding income/expense, budget, and signing out -->
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAddIncome"
                 style="@style/Widget.MaterialComponents.Button"
@@ -158,7 +159,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation pinned to bottom -->
+    <!-- Pinned Bottom Navigation to bottom -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

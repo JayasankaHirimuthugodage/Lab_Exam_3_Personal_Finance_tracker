@@ -27,18 +27,20 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Request POST_NOTIFICATIONS permission for Android 13+
+        // Ask for notification permission on Android 13 or higher
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
         }
 
-        // Set up Toolbar (no back arrow needed)
+        // Initialize and customize the top app bar
+
         val toolbar = findViewById<MaterialToolbar>(R.id.homeToolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Home"
         toolbar.setTitleTextColor(resources.getColor(android.R.color.white, theme))
 
-        // ✅ Handle toolbar menu clicks
+        // Handle toolbar menu clicks
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_sign_out -> {
@@ -49,16 +51,18 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        // Initialize text views
+        // Link TextViews for displaying summary
+
         tvTotalIncome = findViewById(R.id.tvTotalIncome)
         tvTotalExpense = findViewById(R.id.tvTotalExpense)
         tvBalance = findViewById(R.id.tvBalance)
 
-        // Buttons
+        // Initialize action buttons and bottom navigation
+
         val btnAddTransaction = findViewById<Button>(R.id.btnAddTransaction)
         val btnAddIncome = findViewById<Button>(R.id.btnAddIncome)
         val btnSetBudget = findViewById<Button>(R.id.btnSetBudget)
-        val btnSignOut = findViewById<Button>(R.id.btnSignOut) // ✅ From layout
+        val btnSignOut = findViewById<Button>(R.id.btnSignOut)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         btnAddTransaction.setOnClickListener {
@@ -77,7 +81,8 @@ class HomeActivity : AppCompatActivity() {
             showSignOutDialog()
         }
 
-        // Bottom nav actions
+        // Handle bottom navigation item selections
+
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> true

@@ -15,11 +15,10 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var switchNotifications: SwitchCompat
     private lateinit var etFullName: EditText
     private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
     private lateinit var btnDeleteAccount: Button
     private lateinit var btnBackup: Button
     private lateinit var btnRestore: Button
-    private lateinit var btnExportText: Button  // NEW
+    private lateinit var btnExportText: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,43 +32,40 @@ class SettingsActivity : AppCompatActivity() {
         toolbar.setTitleTextColor(resources.getColor(android.R.color.white, theme))
         toolbar.setNavigationOnClickListener { onBackPressed() }
 
-        // Views
-        spinnerCurrency = findViewById(R.id.spinnerCurrency)
-        btnSaveCurrency = findViewById(R.id.btnSaveCurrency)
+        // Initialize UI components
+        spinnerCurrency     = findViewById(R.id.spinnerCurrency)
+        btnSaveCurrency     = findViewById(R.id.btnSaveCurrency)
         switchNotifications = findViewById(R.id.switchNotifications)
-        etFullName = findViewById(R.id.etFullName)
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
-        btnDeleteAccount = findViewById(R.id.btnDeleteAccount)
-        btnBackup = findViewById(R.id.btnBackup)
-        btnRestore = findViewById(R.id.btnRestore)
-        btnExportText = findViewById(R.id.btnExportText) // NEW
+        etFullName          = findViewById(R.id.etFullName)
+        etEmail             = findViewById(R.id.etEmail)
+        btnDeleteAccount    = findViewById(R.id.btnDeleteAccount)
+        btnBackup           = findViewById(R.id.btnBackup)
+        btnRestore          = findViewById(R.id.btnRestore)
+        btnExportText       = findViewById(R.id.btnExportText)
 
         val prefs = SharedPrefManager(this)
 
-        // Currency Spinner
+        // Currency spinner setup
         val currencyList = resources.getStringArray(R.array.currency_array).toList()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, currencyList)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerCurrency.adapter = adapter
+        ArrayAdapter(this, android.R.layout.simple_spinner_item, currencyList).also {
+            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerCurrency.adapter = it
+        }
 
-        val currentCurrency = prefs.loadCurrency()
-        val selectedIndex = currencyList.indexOf(currentCurrency).takeIf { it >= 0 } ?: 0
-        spinnerCurrency.setSelection(selectedIndex)
-
-        // Load saved preferences
+        // Pre-load saved values
+        spinnerCurrency.setSelection(
+            currencyList.indexOf(prefs.loadCurrency()).takeIf { it >= 0 } ?: 0
+        )
         switchNotifications.isChecked = prefs.isBudgetNotificationEnabled()
         etFullName.setText(prefs.loadFullName())
         etEmail.setText(prefs.loadEmail())
-        etPassword.setText(prefs.loadPassword())
 
-        // Save preferences
+        // Save Preferences
         btnSaveCurrency.setOnClickListener {
             prefs.saveCurrency(spinnerCurrency.selectedItem.toString())
             prefs.setBudgetNotificationEnabled(switchNotifications.isChecked)
-            prefs.saveFullName(etFullName.text.toString())
-            prefs.saveEmail(etEmail.text.toString())
-            prefs.savePassword(etPassword.text.toString())
+            prefs.saveFullName(etFullName.text.toString().trim())
+            prefs.saveEmail(etEmail.text.toString().trim())
 
             Toast.makeText(this, "Preferences saved", Toast.LENGTH_SHORT).show()
             finish()
@@ -82,45 +78,44 @@ class SettingsActivity : AppCompatActivity() {
             finish()
         }
 
-        // Backup to internal storage
+        // Backup
         btnBackup.setOnClickListener {
             prefs.backupToFile()
             Toast.makeText(this, "Backup exported", Toast.LENGTH_SHORT).show()
         }
 
-        // Restore from backup
+        // Restore
         btnRestore.setOnClickListener {
             prefs.restoreFromFile()
             Toast.makeText(this, "Backup restored", Toast.LENGTH_SHORT).show()
         }
 
-        // Export to text file in Downloads
+        // Export as text
         btnExportText.setOnClickListener {
             val transactions = prefs.loadTransactions()
             if (transactions.isEmpty()) {
                 Toast.makeText(this, "No transactions to export", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            val formattedText = transactions.joinToString(separator = "\n-----------------------------\n") {
+            val formattedText = transactions.joinToString("\n-----------------------------\n") {
                 "Title   : ${it.title}\n" +
                         "Amount  : ${it.amount} ${prefs.loadCurrency()}\n" +
                         "Type    : ${it.type}\n" +
                         "Category: ${it.category}\n" +
                         "Date    : ${it.date}"
             }
-
             try {
                 val fileName = "exported_transactions.txt"
-                val downloads = android.os.Environment.getExternalStoragePublicDirectory(
-                    android.os.Environment.DIRECTORY_DOWNLOADS
-                )
+                val downloads = android.os.Environment
+                    .getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS)
                 if (!downloads.exists()) downloads.mkdirs()
 
-                val exportFile = File(downloads, fileName)
-                exportFile.writeText(formattedText)
-
-                Toast.makeText(this, "Exported to Downloads:\n${exportFile.absolutePath}", Toast.LENGTH_LONG).show()
+                File(downloads, fileName).writeText(formattedText)
+                Toast.makeText(
+                    this,
+                    "Exported to Downloads:\n${downloads.absolutePath}/$fileName",
+                    Toast.LENGTH_LONG
+                ).show()
             } catch (e: Exception) {
                 e.printStackTrace()
                 Toast.makeText(this, "Export failed", Toast.LENGTH_SHORT).show()

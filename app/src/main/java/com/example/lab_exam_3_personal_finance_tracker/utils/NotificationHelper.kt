@@ -24,9 +24,9 @@ object NotificationHelper {
         }
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground) // you can customize this icon
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("⚠️ Budget Limit Alert")
-            .setContentText("You've spent LKR %.2f of your LKR %.2f budget.".format(expense, budget))
+            .setContentText("You've spent  %.2f of your  %.2f budget.".format(expense, budget))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
 
         manager.notify(1, builder.build())

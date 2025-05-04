@@ -19,7 +19,8 @@ class AddTransactionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_transaction)
 
-        // Toolbar setup
+        // Set up top toolbar with back button and title
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Add Expense"
@@ -36,11 +37,13 @@ class AddTransactionActivity : AppCompatActivity() {
         val layoutAmount = findViewById<TextInputLayout>(R.id.layoutAmount)
         val layoutDate = findViewById<TextInputLayout>(R.id.layoutDate)
 
-        // Load currency format and update amount hint
+        // Update the amount input hint with the selected currency
+
         val currency = SharedPrefManager(this).loadCurrency()
         layoutAmount.hint = "Amount ($currency)"
 
-        // Set up category spinner
+        // Initialize spinner with categories from resources
+
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.category_array,
@@ -49,7 +52,8 @@ class AddTransactionActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCategory.adapter = adapter
 
-        // Icon update on category change
+        // Change the preview icon based on selected category
+
         spinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedCategory = parent?.getItemAtPosition(position).toString()
@@ -59,7 +63,8 @@ class AddTransactionActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        // Show calendar picker when user taps date field
+        // Open date picker dialog on date field click
+
         etDate.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -73,7 +78,8 @@ class AddTransactionActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        // Save transaction
+        // Validate inputs and save expense transaction
+
         btnSave.setOnClickListener {
             val title = etTitle.text.toString().trim()
             val amountText = etAmount.text.toString().trim()
@@ -118,7 +124,7 @@ class AddTransactionActivity : AppCompatActivity() {
             }
         }
 
-        // Bottom Navigation Bar setup
+        //  Setup Bottom Navigation Bar
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.selectedItemId = R.id.menu_add
 

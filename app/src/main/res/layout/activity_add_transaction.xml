@@ -7,23 +7,24 @@
     android:background="#BBDEFB"
     android:fitsSystemWindows="true">
 
-    <!-- ✅ Use AppBarLayout for proper toolbar positioning -->
+    <!-- AppBarLayout wraps the toolbar to allow scroll and elevation behavior -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#1976D2"
             app:title="Add Expense"
+            app:titleCentered="true"
             app:titleTextColor="@android:color/white"
             app:navigationIcon="?attr/homeAsUpIndicator" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Scrollable Content -->
+    <!-- Main scrollable form content area -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,7 +41,7 @@
             android:paddingTop="24dp"
             android:paddingBottom="32dp">
 
-            <!-- Expense Image -->
+            <!-- Display image inside circular frame to represent expense visually -->
             <FrameLayout
                 android:layout_width="140dp"
                 android:layout_height="140dp"
@@ -58,7 +59,7 @@
                     android:contentDescription="Expense Illustration" />
             </FrameLayout>
 
-            <!-- Title Field -->
+            <!-- Input field for entering the expense title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,7 +84,7 @@
                     android:background="@android:color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Amount Field -->
+            <!-- Input field for specifying the amount spent -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,7 +111,7 @@
                     android:background="@android:color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Category Dropdown -->
+            <!-- Dropdown to select an expense category and show related icon -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +148,7 @@
                     android:contentDescription="Category Icon" />
             </LinearLayout>
 
-            <!-- Date Field -->
+            <!-- Input field to pick a transaction date using a date picker -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,7 +178,7 @@
                     android:background="@android:color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Save Button -->
+            <!-- Submits the expense form and saves the transaction -->
             <Button
                 android:id="@+id/btnSaveTransaction"
                 android:layout_width="match_parent"
@@ -189,15 +190,13 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation with Restored Margins -->
+
+    <!-- Pinned Bottom Navigation to bottom -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:background="#ffffff"
         android:elevation="8dp"
         app:menu="@menu/bottom_nav_menu"
